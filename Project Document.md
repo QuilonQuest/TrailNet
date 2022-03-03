@@ -31,17 +31,23 @@ This  sample  demonstrates  an  end-to-end  blockchain  application  that  conne
 ## 1. Project Description:
 
  This project is designing a Supply Chain dApp (Decentralized Application) using the Hyperledger Fabric Blockchain framework, other technologies used are Nodejs which acts as a middleware technology in connecting frontend and backend (blockchain) to communicate together, React is used for developing the Web Application. The reason for Blockchain is to create a trustless, efficient, and transparent system that allows faster movement of products and transaction processing.
+ 
 ![ArchitectureDiagram](https://gateway.pinata.cloud/ipfs/QmNmfReDhdVrzTJnymXqs1DfHUeTedz2DTG2GQpj8fj4ov)
 ## **2. State diagram**
+
  ![StateDiagram](https://gateway.pinata.cloud/ipfs/QmWy6chZHjSPLuwWdBtzZxwfdP9vUDckVdVWYRyjudYNK9)
 ## **3. Data**
+
  ![Data](https://i.postimg.cc/26nZJJQh/State-Data.jpg)
 
 ## **4. Functions - inputs/outputs**
+
  ![Data](https://i.postimg.cc/nrZDtk25/Function.jpg)
 
 ## **5. Roles**
+
  ![Data](https://i.postimg.cc/FsTJ20LW/Role.jpg)
  
 # Project Plan
+
  ![Project Plan](https://i.postimg.cc/nrCtM83Q/plan.jpg)
