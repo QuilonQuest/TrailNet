@@ -97,7 +97,7 @@ cd HyperLedger-Fabric-Supplychain/serverside/api
 node enrollAdmin.js org1 admin adminpw
 node enrollAdmin.js org2 admin adminpw
 node enrollAdmin.js org3 admin adminpw
-npm start.
+npm start
 ```
 ## To Run Client Side
 
