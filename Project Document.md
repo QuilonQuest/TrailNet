@@ -3,7 +3,7 @@
 The Supply chain industry has been and still is being hampered by trust, efficiency, and transparency. A Blockchain system will support transparency, enhance trust, efficiency, and speed, by utilizing a decentralized ledger that is immutable for recording all transactions among multiple parties allowing verifiability in a tamper-proof way.
 ## **2. Goals:**
 Create a ledger system that creates an eco-system where information flows openly in a permissioned manner, reduces the assumed risk in the supply chain, and reduces the total cost of the supply chain while making the supply chain more agile and adaptive.  
-## ** 3. Stakeholders:**
+## **3. Stakeholders:**
 ### Participants:
 
 - Retailer
@@ -18,7 +18,7 @@ Create a ledger system that creates an eco-system where information flows openly
  - Queries  an  Order  to  get  the  Order  Transaction  History,  tracing  it  back  to origination.
 - Regulator
  - Moderates  all  Orders  in  the  system  to  ensure  that  proper  quality  and guidelines are being followed and Audit purposes.
-## ** 4. Restrictions/Rules: **
+## **4. Restrictions/Rules: **
  ![Restrictions](https://i.postimg.cc/jq80pjMq/Table.jpg)
 ## **5. Data: **
 with  information  about  each  product  transaction  by  all  parties  will  be  stored  on  the Hyperledger database.
