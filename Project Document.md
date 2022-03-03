@@ -50,4 +50,4 @@ This  sample  demonstrates  an  end-to-end  blockchain  application  that  conne
  
 # Project Plan
 
- ![Project Plan](https://i.postimg.cc/nrCtM83Q/plan.jpg)
+ ![Project Plan](https://i.postimg.cc/Fz5bPd5m/Plan.jpg)
