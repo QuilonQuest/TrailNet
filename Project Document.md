@@ -18,13 +18,13 @@ Create a ledger system that creates an eco-system where information flows openly
  - Queries  an  Order  to  get  the  Order  Transaction  History,  tracing  it  back  to origination.
 - Regulator
  - Moderates  all  Orders  in  the  system  to  ensure  that  proper  quality  and guidelines are being followed and Audit purposes.
-## **4. Restrictions/Rules: **
+## **4. Restrictions/Rules:**
  ![Restrictions](https://i.postimg.cc/jq80pjMq/Table.jpg)
-## **5. Data: **
+## **5. Data:**
 with  information  about  each  product  transaction  by  all  parties  will  be  stored  on  the Hyperledger database.
 ## **6. Exceptions:**
 An audit may need to be done and access may be needed in the case of a government investigation (E.g., Money laundering, illegal smuggling)
-## **7. User Stories: **
+## **7. User Stories:**
 This  sample  demonstrates  an  end-to-end  blockchain  application  that  connects  to  Hyperledger Fabric 2.2. It implements attribute-based access control, user management, and a React front-end UI  to  interact  and  query  the  blockchain  ledger.  The  sample  takes  the  user  through  ordering, shipping,  and  enlisting  the  product  for  the  customer.  The  customer  can  trace  the  order  history through  the  supply  chain,  providing  end-to-end  visibility.  For  example,  you  can  see  the  retailer receiving a shipment, and then a customer logging into the application to see a trace of when the shipment  was  ordered,  shipped,  and  received.  Lastly,  a  regulator  has  access  to  all  orders  in  the system to ensure correct practices are followed.
 
 # Architecture
