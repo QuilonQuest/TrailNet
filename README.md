@@ -88,7 +88,7 @@ peer chaincode query -C mychannel -n SupplychainContract -c '{"Args":["getOrderH
 
 ## To Run Server Side
 ```shell
-cd supplychain-Project/serverside/api
+cd HyperLedger-Fabric-Supplychain/serverside/api
 node enrollAdmin.js org1 admin adminpw
 node enrollAdmin.js org2 admin adminpw
 node enrollAdmin.js org3 admin adminpw
@@ -97,7 +97,7 @@ npm start.
 ## To Run Client Side
 
 ```shell
-cd supplychain-Project/clientside
+cd HyperLedger-Fabric-Supplychain/clientside/supplychain
 npm start
 ```
 ### Login Admin in organization1
