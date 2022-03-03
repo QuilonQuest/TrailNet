@@ -10,8 +10,8 @@ sudo usermod -aG docker ${USER}
 ```
 Close the ternimal and open again.
 ```shell
-curl -sSL https://bit.ly/2ysbOFE | bash -s -- 2.2.5 1.5.2
-cd fabric-sample/test-network
+git clone https://github.com/MakTom/HyperLedger-Fabric-Supplychain
+cd HyperLedger-Fabric-Supplychain/test-network
 ./network.sh up
 ```
 # Supplychain Project
@@ -51,42 +51,39 @@ export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.examp
 export CORE_PEER_ADDRESS=localhost:7051
 ```
 
-### 6. Initialize
+### Initialize ChainCode
 ```shell
 peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem" -C mychannel -n SupplychainContract --peerAddresses localhost:7051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt  --peerAddresses localhost:9051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt  --peerAddresses localhost:11051 --tlsRootCertFiles ${PWD}/organizations/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/tls/ca.crt  -c '{"function":"InitLedger","Args":[]}'
 ```
 ## Interact with chain code
 ### CreateProduct
 ```shell
-peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem" -C mychannel -n SupplychainContract -c '{"Args":["createProduct", "Order002", "Orange", "160.00", "110", "farm1", "walmart"]}'
+peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem" -C mychannel -n SupplychainContract -c '{"Args":["createProduct", "admin","Order002", "Orange", "160.00", "110", "farm1", "walmart"]}'
 ```
 ### AssignShipper
 ```shell
-peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem" -C mychannel -n SupplychainContract -c '{"Args":["assignShipper", "Order002", "Ship1"]}'
+peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem" -C mychannel -n SupplychainContract -c '{"Args":["assignShipper","admin", "Order002", "Ship1"]}'
 ```
 ### CreateShipment
 ```shell
-peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem" -C mychannel -n SupplychainContract -c '{"Args":["createShipment", "Order 001", "TrackingID1"]}'
+peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem" -C mychannel -n SupplychainContract -c '{"Args":["createShipment", "admin","Order002", "TrackingID1"]}'
 ```
 ### TransportShipment
 ```shell
-peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem" -C mychannel -n SupplychainContract -c '{"Args":["transportShipment", "Order002"]}'
+peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem" -C mychannel -n SupplychainContract -c '{"Args":["transportShipment", "admin","Order002"]}'
 ```
 ### ReceiveShipment
 ```shell
-peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem" -C mychannel -n SupplychainContract -c '{"Args":["receiveShipment", "Order002"]}'
+peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem" -C mychannel -n SupplychainContract -c '{"Args":["receiveShipment", "admin","Order002"]}'
 ```
 ### Select by ID
 ```shell
-peer chaincode query -C mychannel -n SupplychainContract -c '{"Args":["selectOrderByID","test3"]}' | jq
+peer chaincode query -C mychannel -n SupplychainContract -c '{"Args":["selectOrderByID","Order002"]}' | jq
 ```
-### Select all
-```shell
-peer chaincode query -C mychannel -n SupplychainContract -c '{"Args":["selectAllOrders"]}' | jq
-```
+
 ### OrderHistory
 ```shell
-peer chaincode query -C mychannel -n SupplychainContract -c '{"Args":["getOrderHistory","test"]}' | jq
+peer chaincode query -C mychannel -n SupplychainContract -c '{"Args":["getOrderHistory","admin","Order002"]}' | jq
 ```
 
 ## To Run Server Side
