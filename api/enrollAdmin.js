@@ -22,19 +22,19 @@ async function main() {
         });
         // console.log(process.argv[2]);
         // console.log(process.argv[2]);
-         const ogname = process.argv[2];
-         const uname = process.argv[3];
-         const pswd = process.argv[4];
-         const orgname = ogname+'.example.com';
-        const connectionname = 'connection-'+ogname+'.json';
+        const ogname = process.argv[2];
+        const uname = process.argv[3];
+        const pswd = process.argv[4];
+        const orgname = ogname + '.example.com';
+        const connectionname = 'connection-' + ogname + '.json';
         // console.log(connectionname);
-         const canname = 'ca.'+ogname+'.example.com';
+        const canname = 'ca.' + ogname + '.example.com';
         // console.log(canname);
-         const msp = ogname.replace('o','O')+'MSP';
-         
+        const msp = ogname.replace('o', 'O') + 'MSP';
 
 
-        const ccpPath = path.resolve(__dirname, '..', '..', 'test-network', 'organizations', 'peerOrganizations', orgname, connectionname);
+
+        const ccpPath = path.resolve(__dirname, '..', 'test-network', 'organizations', 'peerOrganizations', orgname, connectionname);
         const ccp = JSON.parse(fs.readFileSync(ccpPath, 'utf8'));
 
         // Create a new CA client for interacting with the CA.
@@ -43,7 +43,7 @@ async function main() {
         const ca = new FabricCAServices(caInfo.url, { trustedRoots: caTLSCACerts, verify: false }, caInfo.caName);
 
         // Create a new file system based wallet for managing identities.
-        const walletPath = path.join(process.cwd(), 'wallet',ogname);
+        const walletPath = path.join(process.cwd(), 'wallet', ogname);
 
         const wallet = await Wallets.newFileSystemWallet(walletPath);
         console.log(`Wallet path: ${walletPath}`);
