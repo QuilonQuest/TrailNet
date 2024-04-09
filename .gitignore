@@ -1,2 +1,4 @@
 */node_modules/
 .vagrant/
+test-network/organizations/
+test-network/system-genesis-block/
