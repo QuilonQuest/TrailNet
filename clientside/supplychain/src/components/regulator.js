@@ -1,19 +1,19 @@
-import React, { useState}  from "react";
+import React, { useState } from "react";
 import axios from 'axios';
-import {  Spinner } from 'react-bootstrap';
+import { Spinner } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function Regulator(props){
+function Regulator(props) {
 
     const [currentctx, setcurrentctx] = useState('none');
     const [orderId, setorderId] = useState();
     const [Result, setResult] = useState([]);
     const [isloading, setIsLoading] = useState(false);
-    
+
     function handleView(e) {
         e.preventDefault();
         setIsLoading(true);
-        axios.get('http://34.124.116.30:8080/orders/history', {
+        axios.get('http://localhost:8080/orders/history', {
             params: {
                 ogname: props.UserOrg,
                 username: props.User,
@@ -22,34 +22,34 @@ function Regulator(props){
             }
         }).then((response) => {
             setIsLoading(false);
-            Result.length=0;
-            if(response.data.length > 0)
+            Result.length = 0;
+            if (response.data.length > 0)
                 setcurrentctx('View list');
-            for (let i = 0; i < response.data.length; i++) {
+            for (let i = 0;i < response.data.length;i++) {
                 Result.push(response.data[i]);
             }
             setorderId('');
-            
+
         });
     }
 
-    return(
+    return (
         <div >
-        <button className="button" onClick={() => setcurrentctx('View Order') }>View Order</button>
-            {isloading && 
+            <button className="button" onClick={() => setcurrentctx('View Order')}>View Order</button>
+            {isloading &&
                 <Spinner animation="border" role="status" variant="light">
                 </Spinner>
-            } 
-            { currentctx === 'View Order' && 
+            }
+            {currentctx === 'View Order' &&
                 <form onSubmit={handleView}>
                     <div className="input-container-submit">
                         <label> Order ID</label>
-                        <input className="input-box"  type="text"  required onChange={(e) => setorderId(e.target.value)}/>
+                        <input className="input-box" type="text" required onChange={(e) => setorderId(e.target.value)} />
                     </div>
-                    <input className="submit-button"  type="submit" value="Submit" />
+                    <input className="submit-button" type="submit" value="Submit" />
                 </form>
             }
-            { currentctx === 'View list' && 
+            {currentctx === 'View list' &&
                 <div >
                     <br></br>
                     <table className="order-list">
@@ -69,7 +69,7 @@ function Regulator(props){
                             </tr>
                         </thead>
                         <tbody>
-                            { 
+                            {
                                 Result.map((item) => (
                                     <tr key={item.Value.ID}>
                                         <td>{item.Value.ID}</td>
@@ -90,7 +90,7 @@ function Regulator(props){
                     </table>
                 </div>
             }
-            
+
         </div>
     )
 }
