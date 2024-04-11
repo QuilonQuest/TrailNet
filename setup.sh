@@ -10,6 +10,7 @@ sudo chmod 666 /var/run/docker.sock
 sudo systemctl restart docker
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+source ~/.bashrc
 nvm --version
 nvm install v16
 nvm use v16

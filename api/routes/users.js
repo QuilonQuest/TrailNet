@@ -13,11 +13,15 @@ router.get('/login', async function (req, res) {
 
         // load the network configuration
         const ccpPath = path.resolve(__dirname, '..', '..', 'test-network', 'organizations', 'peerOrganizations', orgname, connectionname);
+        console.log("ccpPath", ccpPath)
         const ccp = JSON.parse(fs.readFileSync(ccpPath, 'utf8'));
 
         // Create a new file system based wallet for managing identities.
         const walletPath = path.join(process.cwd(), 'wallet', req.query.organization);
+        console.log("walletPath", walletPath)
+
         const wallet = await Wallets.newFileSystemWallet(walletPath);
+
         const userExists = await wallet.get(req.query.username);
         if (!userExists) {
             res.json({ status: false, error: { message: 'User not exist in the wallet!! Please try again' } });
@@ -53,7 +57,7 @@ router.post('/enroll&register', async function (req, res) {
 
 
         // load the network configuration
-        const ccpPath = path.resolve(__dirname, '..', '..', '..', 'test-network', 'organizations', 'peerOrganizations', orgname, connectionname);
+        const ccpPath = path.resolve(__dirname, '..', '..', 'test-network', 'organizations', 'peerOrganizations', orgname, connectionname);
         const ccp = JSON.parse(fs.readFileSync(ccpPath, 'utf8'));
 
         // Create a new CA client for interacting with the CA.
